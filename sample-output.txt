@@ -1,0 +1,1 @@
+The dihedral angle formed by atoms with atomIDs [1, 2, 3, 12] = 99.285°
