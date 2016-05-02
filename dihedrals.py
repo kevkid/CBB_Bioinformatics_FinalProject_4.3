@@ -8,7 +8,7 @@ __version__ = "1.0.0"
 __maintainer__ = "Peter Williams"
 __email__ = "peter.williams@yale.edu"
 
-### Usage:      python3 dihedrals.py -i <input file> -a <Atom ID> -b <Atom ID> -c <Atom ID> -d <Atom ID> -o <output file>
+### Usage:      python3 dihedrals.py -i <input file> -n <input id file> -o <output file>
 ### Examples:   python3 dihedrals.py -i sample-input.pdb -n sample-ids.txt -o sample-output.txt
 ###				python3 dihedrals.py -i sample-input.pdb -n sample-ids.txt
 ### Note:       	Calculates the dihedral angle of a set of 4 atoms in a pdb
