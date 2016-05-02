@@ -46,12 +46,8 @@ def dihedral(filename,idfile,outfile):
 	# Open outfile to set up for writing
 	g=open(outfile,'w')
 	g.write('Atom Names')
-	g.write('\t\t')
+	g.write('\t\t\t')
 	g.write('Atom IDs')
-	g.write('\t\t')
-	g.write('Angle (')
-	g.write(u"\u00b0")
-	g.write(')')
 	g.write('\n')
 	g.write('A1')
 	g.write('\t')
@@ -68,6 +64,10 @@ def dihedral(filename,idfile,outfile):
 	g.write('A3')
 	g.write('\t')
 	g.write('A4')
+	g.write('\t')
+	g.write('Angle (')
+	g.write(u"\u00b0")
+	g.write(')')
 	g.write('\n')
 	
 	###########################################################################

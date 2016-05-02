@@ -1,5 +1,5 @@
-Atom Names		Atom IDs		Angle (°)
-A1	A2	A3	A4	A1	A2	A3	A4
+Atom Names			Atom IDs
+A1	A2	A3	A4	A1	A2	A3	A4	Angle (°)
 N	CA	C	N	1	2	3	12	99.285
 N	CA	CB	CG	1	2	5	6	-69.859
 CA	CB	CG	CD	2	5	6	7	-176.012
