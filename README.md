@@ -6,7 +6,7 @@ Tool that calculates the dihedral angle based on a pdb file and an input-id file
 dihedrals.py takes 2 required inputs (input, inputids) and has one optional (output)
 The tool is called from the command line as exemplified below.
 
-Usage:      python3 distcalc.py -i <input file name> -n <input id file name> -o <.txt output filename>
+Usage:      python3 distcalc.py -i < input file name > -n < input id file name > -o <.txt output filename>
 
 Examples:
 ```{r NCBI_python, engine="python", highlight=TRUE}
