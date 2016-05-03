@@ -2,7 +2,8 @@
 ---------------------------------------------------------------
 Tool that calculates the dihedral angle based on a pdb file and an input-id file containing the corresponing atom ids of four atoms in said file.
 
-Note: This tool is part of a set of bioinformatic and biological structure tools created for CBB752 at Yale University in the Spring 2016. The website containing links to the set of tools can be found at: https://github.com/CBB752Spring2016/CBB752Spring2016.github.io
+## Note: 
+This tool is part of a set of bioinformatic and biological structure tools created for CBB752 at Yale University in the Spring 2016. The website containing links to the set of tools can be found at: https://github.com/CBB752Spring2016/CBB752Spring2016.github.io
 
 # The python tool that accomplishes this task is named dihedrals.py
 
@@ -13,9 +14,9 @@ The tool is called from the command line as exemplified below. It takes in a pdb
 
 ## Usage
 
-Usage:      python3 distcalc.py -i < input file name > -n < input id file name > -o <.txt output filename>
+### Usage:      python3 distcalc.py -i < input file name > -n < input id file name > -o <.txt output filename>
 
-Examples:
+### Examples:
 ```{r NCBI_python, engine="python", highlight=TRUE}
 # Usage from terminal:
 	     python3 dihedrals.py -i sample-input.pdb -n sample-ids.txt -o sample-output.txt
@@ -23,13 +24,13 @@ Examples:
 ```
 
 ## Input and Output formats
-Input Formats:
+### Input Formats:
 
 	-i 	string of corresponding pdb file
 	-n	string corresponding to text file containing integers for atom ids. Each line is a set of 4 which defines the dihedral angle.
    	-o	string containing the name of the file to which the angles are output
 
-Format of Input ID file:
+### Format of Input ID file:
   * Text file containing integers in the format of four atom ids per row. The atom ids of each row define each dihedral angle.
 
 | Atom ID1  | Atom ID2 | Atom ID3 | Atom ID4 |
@@ -41,7 +42,7 @@ Format of Input ID file:
 | ... | ... | ... | ... |
 | ... | ... | ... | ... |
 
-Order of Output file formatting:
+### Order of Output file formatting:
 
 Atom Names			Atom IDs
 
