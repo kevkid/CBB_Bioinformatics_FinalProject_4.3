@@ -1,14 +1,10 @@
-library(Rpdb)
-setwd("~/CBB_Bioinformatics_FinalProject_4.3")
-#some problem with the way it is supposed to normalize
-x <- read.pdb("1g8p.pdb")
-dihedral(x, 1,2,3,4)
+x <- read.csv("sample-input.pdb", as.is = T,header = F, sep = "")
+x <- x[which(x[,1] == "ATOM"),]
+x$V2 <- as.numeric(x$V2)
+x$V7 <- as.numeric(x$V7)
+x$V8 <- as.numeric(x$V8)
+x$V9 <- as.numeric(x$V9)
 #Test:
-p1 <- x$atoms[1,9:11]
-p2 <- x$atoms[2,9:11]
-p3 <- x$atoms[3,9:11]
-p4 <- x$atoms[4,9:11]
-
 CalcDihedral <- function(p1,p2,p3,p4){
   b1 <- as.vector(t(-1*(p2-p1)))
   b2 <- as.vector(t(p3-p2))
@@ -30,8 +26,23 @@ CalcDihedral <- function(p1,p2,p3,p4){
   res <- atan2(y,x)*(180/pi)
   return (res)
 }
-CalcDihedral(p1,p2,p3,p4)
-
+ids <- read.csv("sample-ids.txt",sep = "\t", header = F)
+print(paste("Atom Names","Atom Ids","Angles",sep = "    "))
+print(paste("A1","A2","A3","A4","A1","A2","A3","A4","Angle (°)",sep = "    "))
+calc2 <- c()
+pr2 <- c()
+for(i in 1:nrow(ids)){
+  calc <- CalcDihedral(x[x$V2 == ids[i,1],c(7:9)],x[x$V2 == ids[i,2],c(7:9)],
+               x[x$V2 == ids[i,3],c(7:9)],x[x$V2 == ids[i,4],c(7:9)])
+  calc2 <- c(calc2,calc)
+  pr <- paste(x$V3[(ids[i,1])],x$V3[(ids[i,2])],x$V3[(ids[i,3])],x$V3[(ids[i,4])],
+        ids[i,1],ids[i,2],ids[i,3],ids[i,4],calc)
+  pr2 <- c(pr2, pr)
+  print(pr)
+}
+write.table(paste("Atom Names","Atom Ids","Angles",sep = "    "),file = "Sample-Output2.txt",col.names = F,row.names = F, append = F)
+write.table(paste("A1","A2","A3","A4","A1","A2","A3","A4","Angle (°)",sep = "    "),file = "Sample-Output2.txt",col.names = F,row.names = F,append = T)
+write.table(pr2,file = "Sample-Output2.txt",col.names = F,row.names = F,append = T)
 # ###Works
 # plane1 <- matrix(unlist(c(p1,p2,p3)), byrow = T, ncol = 3)
 # plane2 <- matrix(unlist(c(p2,p3,p4)), byrow = T, ncol = 3)
@@ -56,8 +67,3 @@ crossProduct <- function(ab,ac){
 }
 
 ###Works
-
-std <- function(x){if(length(which(is.na(x)))==0) (x-mean(x))/sd(x) else
-  
-  (x-mean(x,na.rm=T))/sd(x,na.rm=T)
-}
