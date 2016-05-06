@@ -2,11 +2,11 @@
 args = commandArgs(trailingOnly=TRUE)
 
 # test if there is at least one argument: if not, return an error
-if (length(args)==0) {
-  stop("At least one argument must be supplied (input file).n", call.=FALSE)
-} else if (length(args)==1) {
+if (length(args)<2) {
+  stop("At least two arguments must be supplied (input file).n", call.=FALSE)
+} else if (length(args)==2) {
   # default output file
-  args[3] = "out.txt"
+  args[3] = "output.txt"
 }
 
 inputIds = args[1]
