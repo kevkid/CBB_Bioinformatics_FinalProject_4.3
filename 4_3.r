@@ -65,3 +65,4 @@ crossProduct <- function(ab,ac){
   abck = ab[1] * ac[2] - ac[1] * ab[2];
   return (c(abci, abcj, abck))
 }
+###
