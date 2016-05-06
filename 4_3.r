@@ -1,4 +1,27 @@
-x <- read.csv("sample-input.pdb", as.is = T,header = F, sep = "")
+#!/usr/bin/env Rscript
+args = commandArgs(trailingOnly=TRUE)
+
+# test if there is at least one argument: if not, return an error
+if (length(args)==0) {
+  stop("At least one argument must be supplied (input file).n", call.=FALSE)
+} else if (length(args)==1) {
+  # default output file
+  args[3] = "out.txt"
+}
+
+inputIds = args[1]
+inputPDB = args[2]
+
+
+crossProduct <- function(ab,ac){
+  abci = ab[2] * ac[3] - ac[2] * ab[3];
+  abcj = ac[1] * ab[3] - ab[1] * ac[3];
+  abck = ab[1] * ac[2] - ac[1] * ab[2];
+  return (c(abci, abcj, abck))
+}
+
+
+x <- read.csv(inputPDB, as.is = T,header = F, sep = "")
 x <- x[which(x[,1] == "ATOM"),]
 x$V2 <- as.numeric(x$V2)
 x$V7 <- as.numeric(x$V7)
@@ -26,7 +49,7 @@ CalcDihedral <- function(p1,p2,p3,p4){
   res <- atan2(y,x)*(180/pi)
   return (res)
 }
-ids <- read.csv("sample-ids.txt",sep = "\t", header = F)
+ids <- read.csv(inputIds,sep = "\t", header = F)
 print(paste("Atom Names","Atom Ids","Angles",sep = "    "))
 print(paste("A1","A2","A3","A4","A1","A2","A3","A4","Angle (°)",sep = "    "))
 calc2 <- c()
@@ -40,9 +63,9 @@ for(i in 1:nrow(ids)){
   pr2 <- c(pr2, pr)
   print(pr)
 }
-write.table(paste("Atom Names","Atom Ids","Angles",sep = "    "),file = "Sample-Output2.txt",col.names = F,row.names = F, append = F)
-write.table(paste("A1","A2","A3","A4","A1","A2","A3","A4","Angle (°)",sep = "    "),file = "Sample-Output2.txt",col.names = F,row.names = F,append = T)
-write.table(pr2,file = "Sample-Output2.txt",col.names = F,row.names = F,append = T)
+write.table(paste("Atom Names","Atom Ids","Angles",sep = "    "),file = args[3],col.names = F,row.names = F, append = F)
+write.table(paste("A1","A2","A3","A4","A1","A2","A3","A4","Angle (°)",sep = "    "),file = args[3],col.names = F,row.names = F,append = T)
+write.table(pr2,file = args[3],col.names = F,row.names = F,append = T)
 # ###Works
 # plane1 <- matrix(unlist(c(p1,p2,p3)), byrow = T, ncol = 3)
 # plane2 <- matrix(unlist(c(p2,p3,p4)), byrow = T, ncol = 3)
@@ -58,10 +81,3 @@ write.table(pr2,file = "Sample-Output2.txt",col.names = F,row.names = F,append =
 # res <- (crossp1[1]*crossp2[1]+crossp1[2]*crossp2[2]+crossp1[3]*crossp2[3])/
 #   (sqrt(crossp1[1]^2+crossp1[2]^2+crossp1[3]^2)*sqrt(crossp2[1]^2+crossp2[2]^2+crossp2[3]^2))
 # acos(res)*(180/pi)
-
-crossProduct <- function(ab,ac){
-  abci = ab[2] * ac[3] - ac[2] * ab[3];
-  abcj = ac[1] * ab[3] - ab[1] * ac[3];
-  abck = ab[1] * ac[2] - ac[1] * ab[2];
-  return (c(abci, abcj, abck))
-}
