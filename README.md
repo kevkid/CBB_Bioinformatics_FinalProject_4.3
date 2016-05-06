@@ -36,9 +36,9 @@ The tool is called from the command line as exemplified below. It takes in a pdb
    	-o	string containing the name of the file to which the angles are output
 
 ####R:
-  Argument 1: The Input ID file
-  Argument 2: The PDB file
-  Argument 3: The output file
+   	Argument 1: The Input ID file
+   	Argument 2: The PDB file
+   	Argument 3: The output file
   
 ### Format of Input ID file:
   * Text file containing integers in the format of four atom ids per row. The atom ids of each row define each dihedral angle.
