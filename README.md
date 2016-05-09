@@ -2,9 +2,6 @@
 ---------------------------------------------------------------
 R tool that calculates the dihedral angle based on a pdb file and an input-id file containing the corresponing atom ids of four atoms in said file. A tool that accomplishes this task in the language python can be found [here] (https://github.com/peter-mm-williams/Dihedral_Angle_Calc.git). This tool is part of a set of bioinformatic and biological structure tools created for CBB752 at Yale University in the Spring 2016. The website containing the set of tools can be found [here] (http://cbb752spring2016.github.io/Structure).
 
-
-# The python tool that accomplishes this task is named dihedrals.py
-# The R tool that accomplishes this task is named 4_3.r
 ## General
 
 The tool is named 4_3.r. It takes 2 required inputs (input, inputids) and has one optional (output)
